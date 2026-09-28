@@ -1,0 +1,738 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #3E2C1C;
+    background-color: #FBF6EC;
+}
+
+h1, h2, h3 {
+    font-family: 'Patua One', Georgia, serif;
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+/* max-width stops an image being wider than its container, and
+   height auto keeps the shape right instead of squashing it.
+   display block removes the small gap a browser leaves under an
+   image, which was letting the section colour show through. */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* header part css */
+
+.site-header {
+    background-color: #987554;
+    color: #FBF6EC;
+    text-align: center;
+    padding: 1.5rem 1rem;
+}
+
+/* clamp so the brand name shrinks on a phone without me writing a
+   separate rule for it in every media query. 1.75rem is the
+   smallest I could still read comfortably, and 2.25rem is where it
+   stops growing so it never crowds the tagline underneath. */
+.logo {
+    font-family: 'Patua One', Georgia, serif;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    letter-spacing: 0.05em;
+}
+
+.tagline {
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* nav bar css */
+
+.site-nav {
+    background-color: #6A0572;
+    display: flex;
+    /* stacked on a phone because a full width link is a much easier
+       target to hit with a thumb than a small text link */
+    flex-direction: column;
+}
+
+.site-nav a {
+    color: #FBF6EC;
+    text-decoration: none;
+    text-align: center;
+    /* the padding is what makes the tap target tall enough, not the
+       size of the text */
+    padding: 0.9rem 1.5rem;
+    border-bottom: 1px solid #83248A;
+}
+
+.site-nav a:hover {
+    background-color: #FBF6EC;
+    color: #6A0572;
+}
+
+/* underline shows which page you are on, so the nav is not just
+   three identical links */
+.site-nav a.current {
+    text-decoration: underline;
+}
+
+/* section spacing */
+
+/* the side padding is a % rather than a fixed size, so the text
+   never runs to the very edge on a phone and the margins open up
+   on their own as the screen gets wider */
+section {
+    padding: 2.5rem 5%;
+}
+
+/* alternating background so you can see where one section ends and
+   the next begins without me drawing lines everywhere */
+.alt {
+    background-color: #F3E7D3;
+}
+
+/* clamp again, so headings stay in proportion to the body text at
+   every width instead of jumping in size at a breakpoint */
+section h2 {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    margin-bottom: 0.5rem;
+    color: #6A0572;
+}
+
+.section-note {
+    margin-bottom: 1.5rem;
+    color: #6E5943;
+}
+
+/* hero css */
+
+.hero {
+    background-color: #E5D3B3;
+}
+
+/* the biggest text on the site, so it gets the widest clamp range.
+   5vw is the preferred size, but the 2.8rem cap stops it turning
+   into a banner on a wide monitor */
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-bottom: 0.75rem;
+}
+
+.hero-text p {
+    margin-bottom: 1.25rem;
+}
+
+.hero-image {
+    margin-top: 1.5rem;
+}
+
+.hero-image img {
+    border-radius: 8px;
+}
+
+.button {
+    display: inline-block;
+    background-color: #6A0572;
+    color: #FBF6EC;
+    text-decoration: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+}
+
+.button:hover {
+    background-color: #4E0454;
+}
+
+/* about */
+
+.about-inner img {
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+}
+
+/* homepage css */
+
+/* grid rather than flex here because the cards are a set of equal
+   boxes. with grid the number of columns is one line to change at
+   each breakpoint, instead of working out widths by hand */
+.card-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+.card {
+    background-color: #FFFFFF;
+    border: 1px solid #D8C7AC;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* the photos are square but the products are different shapes, so
+   a max height keeps every card the same size instead of the tall
+   bottle stretching its own card */
+.card img {
+    margin: 0 auto 0.75rem auto;
+    max-height: 11rem;
+    width: auto;
+    border-radius: 6px;
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+}
+
+.price {
+    font-family: 'Patua One', Georgia, serif;
+    color: #6A0572;
+    margin-top: 0.6rem;
+}
+
+/* why kombucha */
+
+.reason-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+/* a left border instead of a full outline, so these read as notes
+   rather than as another set of product cards */
+.reason {
+    background-color: #FFFFFF;
+    border-left: 4px solid #987554;
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+}
+
+.reason h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+/* products page */
+
+.product-row {
+    background-color: #FFFFFF;
+    border: 1px solid #D8C7AC;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.product-row img {
+    margin: 0 auto 1rem auto;
+    max-height: 13rem;
+    width: auto;
+    border-radius: 6px;
+}
+
+.product-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.2rem;
+}
+
+.meta {
+    color: #6E5943;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.product-info p {
+    margin-bottom: 0.6rem;
+}
+
+/* contact page */
+
+.contact-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+.contact-card {
+    background-color: #FFFFFF;
+    border: 1px solid #D8C7AC;
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+
+.contact-card h3 {
+    font-size: 1.1rem;
+    color: #6A0572;
+    margin-bottom: 0.4rem;
+}
+
+.contact-card a {
+    color: #6A0572;
+}
+
+.faq-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+/* same left border as the reason boxes, so a returning visitor
+   recognises this as the same kind of short note */
+.faq-item {
+    border-left: 4px solid #987554;
+    padding-left: 1rem;
+}
+
+.faq-item h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+}
+
+/* tables */
+
+/* this wrapper is the responsive part. a six column table cannot
+   shrink to a 390px phone without the words breaking one letter
+   per line, so instead the table keeps its real width and this box
+   scrolls sideways. the min-width below is what forces that */
+.table-wrap {
+    overflow-x: auto;
+    border: 1px solid #D8C7AC;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+}
+
+table {
+    border-collapse: collapse;
+    min-width: 34rem;
+    width: 100%;
+}
+
+/* the caption sits above the table, so it still makes sense when
+   the table itself has been scrolled halfway across */
+caption {
+    text-align: left;
+    font-style: italic;
+    color: #6E5943;
+    padding: 0.75rem 0.75rem 0.5rem 0.75rem;
+}
+
+th, td {
+    border-bottom: 1px solid #D8C7AC;
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+}
+
+/* the header row is filled in so it stays obvious which column you
+   are reading while the table is scrolled */
+th {
+    background-color: #E5D3B3;
+    font-family: 'Patua One', Georgia, serif;
+    font-weight: normal;
+}
+
+/* routine list */
+
+.routine {
+    background-color: #E5D3B3;
+}
+
+.routine-list {
+    padding-left: 1.5rem;
+}
+
+.routine-list li {
+    margin-bottom: 0.6rem;
+}
+
+/* footer */
+
+.site-footer {
+    background-color: #3E2C1C;
+    color: #E5D3B3;
+    text-align: center;
+    padding: 1.5rem 5%;
+}
+
+.site-footer a {
+    color: #E5D3B3;
+}
+
+.site-footer .small {
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+}
+
+/* form page */
+
+/* the form sits in a card so it reads as one task to finish, rather
+   than as more page content to scroll past */
+.form {
+    background-color: #FFFFFF;
+    border: 1px solid #D8C7AC;
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+
+/* the default fieldset border boxes every group in a thin line and
+   makes the form look like a tax return, so it is removed and the
+   legend does the separating instead */
+fieldset {
+    border: 0;
+    margin-bottom: 1.5rem;
+}
+
+legend {
+    font-family: 'Patua One', Georgia, serif;
+    font-size: 1.1rem;
+    color: #6A0572;
+    margin-bottom: 0.75rem;
+}
+
+/* one column on a phone. two fields side by side at this width would
+   leave each one too narrow to read what you have typed */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+}
+
+/* % width rather than a fixed size so a control always fills its
+   column, whatever the column happens to be at that screen size */
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #3E2C1C;
+    background-color: #FBF6EC;
+    border: 1px solid #D8C7AC;
+    border-radius: 6px;
+}
+
+.field textarea {
+    min-height: 7rem;
+    resize: vertical;
+}
+
+/* a visible focus ring, because the default one disappears against
+   the cream background and keyboard users lose their place */
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    outline: 2px solid #6A0572;
+    outline-offset: 1px;
+}
+
+.hint {
+    margin-top: 0.3rem;
+    font-size: 0.85rem;
+    color: #6E5943;
+}
+
+/* flex with wrap so the radio buttons sit in a row when there is
+   room and drop onto the next line when there is not, instead of
+   running off the side of a phone */
+.choice-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.choice {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: normal;
+}
+
+/* the button itself should not stretch to fill the column the way
+   the text inputs do */
+.choice input {
+    width: auto;
+}
+
+/* buttons stack full width on a phone, which makes them easier to
+   hit and keeps submit clearly above reset */
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.form-actions .button {
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.button-plain {
+    background-color: #E5D3B3;
+    color: #3E2C1C;
+}
+
+.button-plain:hover {
+    background-color: #D8C7AC;
+}
+
+/* vue additions, task 9.3d */
+
+/* the nav links are buttons now rather than anchors, because the view is
+   swapped in javascript instead of the browser loading a new page */
+.site-nav button {
+    font-family: inherit;
+    font-size: 1rem;
+    color: #FBF6EC;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #83248A;
+    padding: 0.9rem 1.5rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.site-nav button:hover {
+    background-color: #FBF6EC;
+    color: #6A0572;
+}
+
+.site-nav button.current {
+    text-decoration: underline;
+}
+
+/* inline validation, one line under the field it belongs to */
+.field-error {
+    margin-top: 0.3rem;
+    font-size: 0.85rem;
+    color: #A4161A;
+}
+
+.form-success {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    background-color: #EAF7EE;
+    color: #2D6A4F;
+    border: 1px solid #C3E6CB;
+}
+
+/* the acknowledgement card lives in App.vue, so it is styled here rather
+   than in a scoped block */
+.ack-card {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background-color: #FFFFFF;
+    border: 1px solid #D8C7AC;
+    border-left: 4px solid #6A0572;
+    border-radius: 8px;
+}
+
+.ack-card h3 {
+    font-size: 1.2rem;
+    color: #6A0572;
+    margin-bottom: 0.4rem;
+}
+
+.ack-card ul {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.ack-card li {
+    margin-bottom: 0.3rem;
+}
+
+/* footer columns, stacked on a phone and in a row once there is room */
+.footer-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: center;
+}
+
+.footer-nav button {
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #E5D3B3;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0.2rem 0.5rem;
+}
+
+/* first breakpoint, 48rem which is 768px.
+   this is where a phone stops and a tablet starts, and it is the
+   width where my hero text and photo stopped looking cramped
+   sitting side by side. */
+
+@media (min-width: 48rem) {
+
+    section {
+        padding: 3.5rem 8%;
+    }
+
+    /* enough room for the links to sit in a row now, so the nav
+       stops eating three rows of screen height */
+    .site-nav {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .site-nav a {
+        border-bottom: none;
+    }
+
+    .site-nav button {
+        width: auto;
+        border-bottom: none;
+    }
+
+    .footer-inner {
+        grid-template-columns: repeat(3, 1fr);
+        text-align: left;
+    }
+
+    /* text beside the photo instead of above it, because a full
+       width photo on a wide screen pushes the words out of sight */
+    .hero {
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+    }
+
+    .hero-text {
+        width: 50%;
+    }
+
+    .hero-image {
+        width: 50%;
+        margin-top: 0;
+    }
+
+    .about-inner {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    /* the about photo is portrait, so without a max height it makes
+       the section far taller than the writing next to it */
+    .about-inner img {
+        width: 40%;
+        margin-bottom: 0;
+        max-height: 22rem;
+        object-fit: cover;
+    }
+
+    .about-text {
+        width: 60%;
+    }
+
+    /* two cards fit here. four at this width would leave each one
+       too narrow to read the description in */
+    .card-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reason-row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .contact-row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* two questions across, not three, so each answer keeps a
+       comfortable line length */
+    .faq-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-row {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .product-row img {
+        width: 25%;
+        margin: 0;
+    }
+
+    .product-info {
+        width: 75%;
+    }
+
+    /* two fields across now there is room to read them both. the
+       full class keeps the long ones on their own row */
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .full {
+        grid-column: 1 / -1;
+    }
+
+    /* buttons back onto one row, sized to their text rather than
+       stretched across the whole card */
+    .form-actions {
+        flex-direction: row;
+    }
+
+    .form {
+        padding: 1.75rem;
+    }
+}
+
+/* second breakpoint, 64rem which is 1024px.
+   a laptop screen, which is where Bao Chau reads. there is room
+   here to show the whole range at once instead of scrolling. */
+
+@media (min-width: 64rem) {
+
+    section {
+        padding: 4rem 10%;
+    }
+
+    /* all four products on one row, so the range can be compared in
+       a single glance rather than by scrolling down */
+    .card-row {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* the photo column narrows so the description gets more width,
+       because a long line reads better than a tall narrow column */
+    .product-row img {
+        width: 18%;
+    }
+
+    .product-info {
+        width: 82%;
+    }
+}
